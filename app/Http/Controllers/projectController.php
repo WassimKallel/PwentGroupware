@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 
-class projectController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,7 +36,7 @@ class projectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**

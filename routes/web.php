@@ -15,10 +15,10 @@ Route::get('/', function () {
 
 });
 
-Route::get('/projects', 'projectController@index');
-Route::get('/projects/create', 'projectController@create');
-Route::get('/projects/{id}', 'projectController@show');
-
+Route::get('/projects', 'ProjectController@index');
+Route::post('/projects', 'ProjectController@store');
+Route::get('/projects/create', 'ProjectController@create');
+Route::get('/projects/{id}', 'ProjectController@show');
 
 
 
