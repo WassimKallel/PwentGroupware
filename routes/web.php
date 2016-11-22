@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +10,13 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
+
 });
+
+Route::get('/projects', 'projectController@index');
+
+Route::get('/projects/{id}', 'projectController@show');
+
+
