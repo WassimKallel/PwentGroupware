@@ -21,3 +21,7 @@ Route::get('/projects/{id}', 'projectController@show');
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
