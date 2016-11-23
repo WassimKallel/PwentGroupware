@@ -58,6 +58,12 @@ class ProjectController extends Controller
         $creationDate = $project->created_at;
         return view('project.show')->with('project', $project)->with('diffInProjectCreation', $creationDate->diffForHumans($carbon));
     }
+        public function main($id)
+    {
+        $project = Project::find($id);
+        return view('project.main')->with('project', $project);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
