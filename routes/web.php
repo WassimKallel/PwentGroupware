@@ -23,6 +23,9 @@ Route::post('/projects/{id}', 'PostController@store');
 Route::post('/projects/post/{id}', 'CommentController@store');
 
 
+Route::get('/projects/time/{id}', 'ProjectController@test');
+
+
 
 Auth::routes();
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 use Auth;
+use Carbon\Carbon;
 
 class ProjectController extends Controller
 {
@@ -14,6 +15,7 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     
+
     public function index()
     {
         $projects = Project::all();
@@ -41,7 +43,6 @@ class ProjectController extends Controller
     {
         $project = new Project($request->all());
         Auth::user()->Projects()->save($project);
-        //return $request->all();
     }
 
     /**
@@ -53,7 +54,9 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::find($id);
-        return view('project.show')->with('project', $project);
+        $carbon = Carbon::now();
+        $creationDate = $project->created_at;
+        return view('project.show')->with('project', $project)->with('diffInProjectCreation', $creationDate->diffForHumans($carbon));
     }
 
     /**

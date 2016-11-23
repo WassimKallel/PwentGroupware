@@ -17,4 +17,11 @@ class Project extends Model
    	{
    		return $this->belongsTo(User::class);
    	}
+    protected $dates = ['created_at'];
+
+    //public function getDates()
+    //{
+    //    $defaults = array(static::CREATED_AT, static::UPDATED_AT);
+    //    return array_merge($this->dates, $defaults);
+    //}
 }
