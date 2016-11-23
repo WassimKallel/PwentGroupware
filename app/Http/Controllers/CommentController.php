@@ -3,21 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Project;
+use App\Comment;
+use App\Post;
+use App\User;
 use Auth;
 
-class ProjectController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
     public function index()
     {
-        $projects = Project::all();
-        return view('project.index')->with('projects', $projects);
+        //
     }
 
     /**
@@ -27,8 +27,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-
-        return view('project.create');
+        //
     }
 
     /**
@@ -37,11 +36,14 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id,Request $request)
     {
-        $project = new Project($request->all());
-        Auth::user()->Projects()->save($project);
-        //return $request->all();
+        $comment = new Comment($request->all());
+        $post = Post::find($id);
+        $comment->post()->associate($post);
+        $comment->user()->associate(Auth::user());
+        $comment->save();
+        return back();
     }
 
     /**
@@ -52,8 +54,7 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project = Project::find($id);
-        return view('project.show')->with('project', $project);
+        //
     }
 
     /**

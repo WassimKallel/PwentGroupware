@@ -19,6 +19,8 @@ Route::get('/projects', 'ProjectController@index');
 Route::post('/projects', 'ProjectController@store');
 Route::get('/projects/create', 'ProjectController@create');
 Route::get('/projects/{id}', 'ProjectController@show');
+Route::post('/projects/{id}', 'PostController@store');
+Route::post('/projects/post/{id}', 'CommentController@store');
 
 
 
