@@ -25,6 +25,14 @@ class UserController extends Controller
             $user->avatar_path = $filename;
             $user->save();
         }
+        if($request->hasFile('header')){
+            $header = $request->file('header');
+            $filename = time() . '.' . $header->getClientOriginalExtension();
+            Image::make($header)->resize(300, 300)->save(public_path('uploads/profiles/header_images/' . $filename ) );
+            $user = Auth::user();
+            $user->header_image_path = $filename;
+            $user->save();
+        }
         return back();
         //return view('profile', array('user' => Auth::user()) );
     }

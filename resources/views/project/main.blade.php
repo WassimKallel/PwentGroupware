@@ -4,6 +4,10 @@
 {{ $project->name }}
 @stop
 
+@section('background-image')
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+@stop
+
 @section('title')
 {{ $project->name }}
 @stop

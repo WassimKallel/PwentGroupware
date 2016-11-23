@@ -1,66 +1,121 @@
-{!! Html::style('vendor/bootstrap/css/bootstrap.min.css') !!}
+@extends('layout')
 
+@section('pagetitle')
+{{ $user->name }}'s Profile
+@stop
+@section('title')
+{{ $user->name }}'s Profile
+@stop
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+@section('background-image')
+    <header class="intro-header" style="background-image: url('uploads/profiles/header_images/{{$user->header_image_path}}')">
+@stop
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <img src="uploads/profiles/avatars/{{$user->avatar_path}}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
-            <h2>{{ $user->name }}'s Profile</h2>
-            
+@section('pageContent')
+<style type="text/css">
+
+    .image figure {
+        left:0px;
+        margin-top:-130px;
+        width: 150px;
+        height: 150px;
+        vertical-align: top;
+        align-content: center;
+        border-radius: 50%;
+        background: #000;
+    }
+    .image figure img {
+        width: 150px;
+        height: 150px;
+        vertical-align: top;
+        align-content: center;
+        border-radius: 50%;
+        opacity: 1;
+        -webkit-transition: .3s ease-in-out;
+        transition: .3s ease-in-out;
+    }
+    .image figure div {
+        margin-top: -110px;
+        text-align: center;
+        width: 150px;
+        opacity: 0;
+    }
+    .image figure:hover img {
+        opacity: .5;
+    }
+    .image figure:hover div {
+        opacity: 1;
+        color:grey;
+    }
+
+</style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+            <div class="image">
+                <figure>
+                    <img src="uploads/profiles/avatars/{{$user->avatar_path}}" data-toggle="modal" data-target="#avatarModal">
+                    <div><span class="glyphicon glyphicon-user"></span><br>Update avatar</div>
+                </figure>
+            </div>
+            </div>
         </div>
     </div>
-</div>
+    <div class="container">
 
-
-
-
-<div class="container">
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Update avatar</button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Update avatar</h4>
+      <!-- Modal -->
+      <div class="modal fade" id="avatarModal" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Update avatar</h4> 
+            </div>
+            <div class="modal-body">
+              <form enctype="multipart/form-data" action="/profile" method="POST">
+                    <label>Update Profile Image</label>
+                    <input type="file" name="avatar">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-default btn-primary">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+          </div>
         </div>
-        <div class="modal-body">
-          <form enctype="multipart/form-data" action="/profile" method="POST">
-                <label>Update Profile Image</label>
-                <input type="file" name="avatar">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            
-        </div>
-        <div class="modal-footer">
-        <input type="submit" class="btn btn-sm btn-primary">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-        </form>
       </div>
-      
     </div>
-  </div>
-  
-</div>
 
-    <!-- jQuery -->
-    <script src=""></script>
-    {!! Html::script('vendor/jquery/jquery.min.js') !!}
-    <!-- Bootstrap Core JavaScript -->
-    <script src=""></script>
-    {!! Html::script('vendor/bootstrap/js/bootstrap.min.js') !!}
-</body>
-</html>
+    <button type="button" class="btn" data-toggle="modal" data-target="#headerModal">header</button>
+
+    <div class="container">
+
+      <!-- Modal -->
+      <div class="modal fade" id="headerModal" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Update header</h4> 
+            </div>
+            <div class="modal-body">
+              <form enctype="multipart/form-data" action="/profile" method="POST">
+                    <label>Update Header Image</label>
+                    <input type="file" name="header">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-default btn-primary">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+@stop
