@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Image;
+
 class UserController extends Controller
 {
     /**
@@ -18,12 +20,13 @@ class UserController extends Controller
         if($request->hasFile('avatar')){
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
+            Image::make($avatar)->resize(300, 300)->save(public_path('uploads/profiles/avatars/' . $filename ) );
             $user = Auth::user();
-            $user->avatar = $filename;
+            $user->avatar_path = $filename;
             $user->save();
         }
-        return view('profile', array('user' => Auth::user()) );
+        return back();
+        //return view('profile', array('user' => Auth::user()) );
     }
 
     public function index()
