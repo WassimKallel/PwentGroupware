@@ -22,7 +22,9 @@ Route::post('/projects/{id}', 'PostController@store');
 Route::post('/projects/post/{id}', 'CommentController@store');
 
 Route::get('/profile','UserController@index');
+Route::get('/profile/{id}','UserController@show');
 Route::post('/profile','UserController@update_avatar');
+
 
 Route::get('/projects/main/{id}', 'ProjectController@main');
 

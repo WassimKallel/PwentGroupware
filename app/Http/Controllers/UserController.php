@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Image;
+use App\User;
 
 class UserController extends Controller
 {
@@ -28,7 +29,7 @@ class UserController extends Controller
         if($request->hasFile('header')){
             $header = $request->file('header');
             $filename = time() . '.' . $header->getClientOriginalExtension();
-            Image::make($header)->resize(300, 300)->save(public_path('uploads/profiles/header_images/' . $filename ) );
+            Image::make($header)->save(public_path('uploads/profiles/header_images/' . $filename ) );
             $user = Auth::user();
             $user->header_image_path = $filename;
             $user->save();
@@ -39,7 +40,7 @@ class UserController extends Controller
 
     public function index()
     {
-        return View('profile.index')->with('user', Auth::user());
+        return View('profile.index')->with('user', Auth::user())->with('editableProfile', true);
     }
 
     /**
@@ -71,7 +72,14 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        if ($user == Auth::user()){
+            $editableProfile = true;
+        }
+        else{
+            $editableProfile = false;
+        };
+        return View('profile.index')->with('user',$user)->with('editableProfile', $editableProfile);
     }
 
     /**
