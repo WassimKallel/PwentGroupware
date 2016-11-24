@@ -9,6 +9,7 @@ class Post extends Model
     protected $fillable = [
         'title', 'body',
     ];
+    protected $dates = ['created_at','updated_at'];
     public function comments()
    	{
    		return $this->hasMany(Comment::class);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 use App\Post;
+use Carbon\Carbon;
 use Auth;
 
 class PostController extends Controller
@@ -51,7 +52,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        $creationDate = $post->created_at;
+        // return $post;
+        $carbon = Carbon::now();
+        return   view('post.show')->with('post', $post)->with('diffInProjectCreation', $creationDate->diffForHumans($carbon));
     }
 
     /**

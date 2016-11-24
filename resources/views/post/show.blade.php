@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('pagetitle')
-{{ $project->name }}
+{{ $post->project->name }}
 @stop
 
 @section('background-image')
@@ -9,11 +9,11 @@
 @stop
 
 @section('title')
-{{ $project->name }}
+{{ $post->project->name }}
 @stop
 
 @section('description')
-{{ $project->status }}
+{{ $post->project->description }} - {{ $post->project->status }}
 @stop
 
 
@@ -21,27 +21,24 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<h2 class="post-title">
+							{{$post->title}}
+			</h2>
 			<p>
-				{{ $project->description }}	
+				{{$post->body}}	
 			</p>
 			<hr>
-			<h2>
-			Related Posts:
+			<h2 class="post-title">
+					Comments :
 			</h2>
-			@foreach($project->Posts as $post)
+			@foreach($post->Comments as $comment)
 				<div class="post-preview">
-					<a href="/posts/{{$post->id}}">
-						<h3 class="post-title">
-							{{$post->title}}
-						</h3>
 						<p class="post-subtitle">
-							{{$post->body}}
+							{{$comment->body}}
 						</p>
-					</a>
-					<p class="post-meta">Posted by <a href="#">{{$post->user->name}}</a> {{$post->created_at->diffForHumans()}}</p>
+					<p class="post-meta">Posted by <a href="#">{{$comment->user->name }}</a> {{$comment->created_at->diffForHumans()}}</p>
 				</div>
-			<hr>
+			
 			@endforeach
 				<hr>
 				<!-- Pager -->
