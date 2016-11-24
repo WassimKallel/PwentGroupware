@@ -1,11 +1,3 @@
-@foreach($projects as $project)
-	<a href="/projects/{{$project->id}}"><h1>{{ $project->name }}</h1></a>
-	<h3>{{ $project->status }}</h3>
-	<p>{{ $project->description }}</p>
-@endforeach
-
-
-
 @extends('layout')
 
 @section('pagetitle')
@@ -30,14 +22,14 @@
 				<div class="post-preview">
 					<a href="/projects/{{$project->id}}">
 						<h2 class="post-title">
-							{{$post->title}}
+							{{ $project->name }}
 						</h2>
 						<h3 class="post-subtitle">
-							{{$post->body}}
+							{{$project->description}}
 						</h3>
 					</a>
-					
-					<p class="post-meta">Posted by <a href="#">{{$project->user->name}}</a> {{$project->created_at->diffForHumans()}}</p>
+
+					<p class="post-meta">Posted by <a href="#">{{$project->user->name}}</a> {{$project->created_at->diffForHumans()}} - {{ $project->status }}</p>
 				</div>
 			<hr>
 			@endforeach
