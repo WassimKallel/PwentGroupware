@@ -25,7 +25,7 @@
 							{{ $project->name }}
 						</h2>
 						<h3 class="post-subtitle">
-							{{$project->description}}
+							{{ str_limit($project->description, 200) }}
 						</h3>
 					</a>
 

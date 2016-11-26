@@ -49,11 +49,15 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
+
 					<li>
 						<a href="index.html">Project home</a>
 					</li>
 					<li>
 						<a href="about.html">About Creator</a>
+					</li>
+					<li>
+					<img src="../uploads/profiles/avatars/{{Auth::user()->avatar_path}}" style="border-radius:50%;height: 40px; width: 40px; margin-top: 10px; margin-right:10px;" data-toggle="modal" data-target="#avatarModal">
 					</li>
 				</ul>
 			</div>
