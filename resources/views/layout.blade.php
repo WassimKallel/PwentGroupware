@@ -14,6 +14,8 @@
 
 	<!-- Theme CSS -->
 	{!! Html::style('css/clean-blog.min.css') !!}
+	{{-- Personalized style --}}
+	{!! Html::style('css/style.css') !!}
 
 	<!-- Custom Fonts -->
 	{!! Html::style('vendor/font-awesome/css/font-awesome.min.csss') !!}

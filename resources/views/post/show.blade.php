@@ -31,15 +31,22 @@
 			<h2 class="post-title">
 					Comments :
 			</h2>
+			{{-- @foreach($post->Comments as $comment) --}}
+				{{-- <div class="post-preview"> --}}
+						{{-- <p class="post-subtitle"> --}}
+							{{-- {{$comment->body}} --}}
+						{{-- </p> --}}
+					{{-- <p class="post-meta">Posted by <a href="#">{{$comment->user->name }}</a> {{$comment->created_at->diffForHumans()}}</p> --}}
+				{{-- </div>			 --}}
+			{{-- @endforeach --}}
 			@foreach($post->Comments as $comment)
-				<div class="post-preview">
-						<p class="post-subtitle">
-							{{$comment->body}}
-						</p>
-					<p class="post-meta">Posted by <a href="#">{{$comment->user->name }}</a> {{$comment->created_at->diffForHumans()}}</p>
-				</div>
-			
-			@endforeach
+          	<div class="panel panel-default">
+          	  <div class="panel-body">
+          	    {{$comment->body}}
+          	  </div>
+          	  <div class="panel-footer"><span {{-- class="pull-right" --}}><img class="thumbnail-sm" src="../uploads/profiles/avatars/{{$comment->user->avatar_path}}" data-toggle="modal" data-target="#avatarModal">    Posted by <a class="username" href="#">{{$comment->user->name }}</a> {{$comment->created_at->diffForHumans()}}</span><div class="clearfix"></div></div>
+          	</div> 
+          	@endforeach
 				<hr>
 				<!-- Pager -->
 				<ul class="pager">

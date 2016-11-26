@@ -94,7 +94,7 @@
       </div>
     </div>
 
-    <button style="margin-top: -155px; color:white;" type="button" class="btn btn-link pull-right" data-toggle="modal" data-target="#headerModal"><span class="glyphicon glyphicon-picture"></span>Update header</button>
+    <button style="margin-top: -155px; color:white;" type="button" class="btn btn-link btn-xs pull-right" data-toggle="modal" data-target="#headerModal"><span class="glyphicon glyphicon-picture"></span>Update header</button>
 
     <div class="container">
 
@@ -123,7 +123,7 @@
       </div>
     </div>
     @endif
-<div class="container">
+<div class="container" style="margin-top: 100px;">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <ul class="nav nav-tabs nav-justified">

@@ -36,7 +36,7 @@
 							{{$post->title}}
 						</h3>
 						<p class="post-subtitle">
-							{{$post->body}}
+							{{ str_limit($post->body, 200) }}
 						</p>
 					</a>
 					<p class="post-meta">Posted by <a href="#">{{$post->user->name}}</a> {{$post->created_at->diffForHumans()}}</p>
