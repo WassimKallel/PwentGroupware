@@ -29,7 +29,7 @@
 						</h3>
 					</a>
 
-					<p class="post-meta">Posted by <a href="#">{{$project->user->name}}</a> {{$project->created_at->diffForHumans()}} - {{ $project->status }}</p>
+					<p class="post-meta">Posted by <a href="{{action('UserController@show',array('id' => $project->user->id))}}">{{$project->user->name}}</a> {{$project->created_at->diffForHumans()}} - {{ $project->status }}</p>
 				</div>
 			<hr>
 			@endforeach

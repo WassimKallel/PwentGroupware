@@ -7,3 +7,18 @@
 {
 	font-style: italic;
 }
+.msg-thumbnail
+{
+	height: 30px;
+	width: 30px; 
+	display: inline-block; 
+	margin-right: 20px;
+
+}
+.profile-avatar-header
+{
+	border-radius:50%;
+	height: 40px; 
+	width: 40px; 
+	margin: 10px; 
+}

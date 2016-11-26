@@ -39,7 +39,7 @@
 							{{ str_limit($post->body, 200) }}
 						</p>
 					</a>
-					<p class="post-meta">Posted by <a href="#">{{$post->user->name}}</a> {{$post->created_at->diffForHumans()}}</p>
+					<p class="post-meta">Posted by <a href="{{action('UserController@show',array('id' => $post->user->id))}}">{{$post->user->name}}</a> {{$post->created_at->diffForHumans()}}</p>
 				</div>
 			<hr>
 			@endforeach

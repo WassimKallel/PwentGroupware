@@ -56,8 +56,18 @@
 					<li>
 						<a href="about.html">About Creator</a>
 					</li>
+					<li class="dropdown">
+        			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Messages <span class="caret">			</span></a>
+        			  <ul class="dropdown-menu">
+        			    <li><a href="#" style="color:grey"><img src="../uploads/profiles/avatars/{{Auth::user()->avatar_path}}" class="msg-thumbnail" data-toggle="modal" data-target="#avatarModal">Action</a></li>
+        			    <li><a href="#" style="color:grey">Action barcha text lahné</a></li>
+        			    <li><a href="#" style="color:grey">Action baaaaarcha text lahné</a></li>
+        			    <li role="separator" class="divider"></li>
+        			    <li><a href="#" style="color:grey">Action</a></li>
+        			  </ul>
+        			</li>
 					<li>
-					<img src="../uploads/profiles/avatars/{{Auth::user()->avatar_path}}" style="border-radius:50%;height: 40px; width: 40px; margin-top: 10px; margin-right:10px;" data-toggle="modal" data-target="#avatarModal">
+					<img src="../uploads/profiles/avatars/{{Auth::user()->avatar_path}}" class="profile-avatar-header">
 					</li>
 				</ul>
 			</div>
