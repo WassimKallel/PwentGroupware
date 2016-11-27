@@ -17,18 +17,22 @@ Route::get('/', function () {
 Route::get('/projects', 'ProjectController@index');
 Route::post('/projects', 'ProjectController@store');
 Route::get('/projects/create', 'ProjectController@create');
-Route::get('/projects/{id}', 'ProjectController@main');
+Route::get('/projects/{id}', 'ProjectController@show');
 Route::post('/projects/{id}', 'PostController@store');
-Route::post('/projects/post/{id}', 'CommentController@store');
 
-Route::get('/profile','UserController@index');
-Route::get('/profile/{id}','UserController@show');
-Route::post('/profile','UserController@update_avatar');
-
-
-Route::get('/projects/main/{id}', 'ProjectController@main');
 
 Route::get('/posts/{id}', 'PostController@show');
+Route::post('/posts/{id}', 'CommentController@store');
+
+
+Route::get('/profile','UserController@index');
+Route::post('/profile','UserController@update_avatar');
+Route::get('/profile/{id}','UserController@show');
+
+
+
+
+
 
 Route::group(['prefix' => 'messages'], function () {
     Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);

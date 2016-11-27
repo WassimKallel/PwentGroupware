@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Project;
 use Auth;
 use Carbon\Carbon;
+use Image;
 
 class ProjectController extends Controller
 {
@@ -42,7 +43,15 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $project = new Project($request->all());
-        Auth::user()->Projects()->save($project);
+        $project->user()->associate(Auth::user());
+        if($request->hasFile('header')){
+            $header = $request->file('header');
+            $filename = time() . '.' . $header->getClientOriginalExtension();
+            Image::make($header)->save(public_path('uploads/projects/header_images/'.$filename ) );
+            $project->header_image_path = $filename;
+            $project->save();
+        }
+        return back();
     }
 
     /**
@@ -54,14 +63,7 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::find($id);
-        $carbon = Carbon::now();
-        $creationDate = $project->created_at;
-        return view('project.show')->with('project', $project)->with('diffInProjectCreation', $creationDate->diffForHumans($carbon));
-    }
-        public function main($id)
-    {
-        $project = Project::find($id);
-        return view('project.main')->with('project', $project);
+        return view('project.show')->with('project', $project);
     }
 
 

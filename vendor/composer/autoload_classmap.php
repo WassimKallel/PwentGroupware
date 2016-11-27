@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddAvatarAndProfileHeaderImage' => $baseDir . '/database/migrations/2016_11_23_162654_add_avatar_and_profile_header_image.php',
+    'AddHeaderPathToProject' => $baseDir . '/database/migrations/2016_11_27_173344_add_header_path_to_project.php',
     'AddSoftDeletesToParticipantsTable' => $baseDir . '/database/migrations/2014_11_03_154831_add_soft_deletes_to_participants_table.php',
     'AddSoftdeletesToThreadsTable' => $baseDir . '/database/migrations/2014_12_04_124531_add_softdeletes_to_threads_table.php',
     'App\\Http\\Controllers\\MessagesController' => $baseDir . '/app/Http/Controllers/MessagesController.php',

@@ -17,7 +17,6 @@ class UserController extends Controller
 
     public function update_avatar(Request $request)
     {
-        // Handle the user upload of avatar
         if($request->hasFile('avatar')){
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
@@ -35,7 +34,6 @@ class UserController extends Controller
             $user->save();
         }
         return back();
-        //return view('profile', array('user' => Auth::user()) );
     }
 
     public function index()

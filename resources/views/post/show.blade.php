@@ -48,12 +48,20 @@
           	</div> 
           	@endforeach
 				<hr>
-				<!-- Pager -->
-				<ul class="pager">
-					<li class="next">
-						<a href="#">Older Posts &rarr;</a>
-					</li>
-				</ul>
+          	<div class="panel panel-default">
+          		<div class="panel-body">
+					<div class="form-group"></div>
+						{!! Form::open() !!}
+						{!! Form::label('body', 'Add Comment',['class' => 'control-label']); !!}
+						{!! Form::textArea('body',null,['class' => 'form-control span6', 'rows' => '5']); !!}
+						<br>
+					</div>
+					<div class="panel-footer">
+						{!! Form::submit('Add Comment', ['class' => 'btn btn-primary pull-right']) !!}
+						{!! Form::close() !!}
+						<div class="clearfix"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

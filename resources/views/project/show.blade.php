@@ -1,36 +1,73 @@
-<h1>{{ $project->name }}</h1>
-<p>by {{$project->user->name }} in {{$project->created_at->diffForHumans()}}</p>
-<h3>{{ $project->status }}</h3>
-<p>{{ $project->description }}</p>
+@extends('layout')
+
+@section('pagetitle')
+{{ $project->name }}
+@stop
+
+@section('background-image')
+<header class="intro-header" style="background-image: url('../uploads/projects/header_images/{{$project->header_image_path}}')">
+@stop
+
+@section('title')
+{{ $project->name }}
+@stop
+
+@section('description')
+{{ $project->status }}
+@stop
 
 
-<hr>
+@section('pageContent')
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<p>
+				{{ $project->description }}	
+			</p>
+			<hr>
+			<h2>
+			Related Posts:
+			</h2>
+			@foreach($project->Posts as $post)
+				<div class="post-preview">
+					<a href="/posts/{{$post->id}}">
+						<h3 class="post-title">
+							{{$post->title}}
+						</h3>
+						<p class="post-subtitle">
+							{{ str_limit($post->body, 200) }}
+						</p>
+					</a>
+					<p class="post-meta">Posted by <a href="{{action('UserController@show',array('id' => $post->user->id))}}">{{$post->user->name}}</a> {{$post->created_at->diffForHumans()}}</p>
+				</div>
+			<hr>
+			@endforeach
+				<hr>
+				<!-- Pager -->
+				<ul class="pager">
+					<li class="next">
+						<a href="#">Older Posts &rarr;</a>
+					</li>
+				</ul>
+				<h1>Add new post</h1>
+			<hr>
+			<div class="form-group"></div>
+			{!! Form::open() !!}
+			{!! Form::label('title', 'Title',['class' => 'control-label']); !!}
+			{!! Form::text('title',null,['class' => 'form-control']); !!}
+			<br>
+			{!! Form::label('body', 'Body',['class' => 'control-label']); !!}
+			{!! Form::textArea('body',null,['class' => 'form-control']); !!}
+			<br>
+			
+			{!! Form::submit('Post', ['class' => 'btn btn-primary form-control']) !!}
+			{!! Form::close() !!}
+			<hr>
+			</div>
 
-<h1>Add new post</h1>
-<hr>
-{!! Form::open() !!}
-{!! Form::label('title', 'Title'); !!}
-{!! Form::text('title'); !!}
-<br>
-{!! Form::label('body', 'Body'); !!}
-{!! Form::text('body'); !!}
-<br>
+			
 
-{!! Form::submit('post'); !!}
-{!! Form::close() !!}
-<hr>
-
-@foreach($project->Posts as $post)
-	<h2>{{$post->title}}</h2>
-	<p>by {{$post->user->name }} in {{$post->created_at->diffForHumans()}}</p>
-	<p>{{$post->body}}</p>
-	@foreach($post->Comments as $comment)
-		<p>{{$comment->user->name }} : {{$comment->body}}  in {{$comment->created_at->diffForHumans()}}</h2>
-	@endforeach
-	{!! Form::model($post, ['method' => 'POST', 'action' =>  [ 'CommentController@store', $post->id] ]) !!}
-	{!! Form::label('body', 'Add comment'); !!}
-	{!! Form::text('body'); !!}
-	{!! Form::submit('comment'); !!}
-	{!! Form::close() !!}
-	<hr>
-@endforeach
+		</div>
+	</div>
+@stop
