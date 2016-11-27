@@ -57,13 +57,23 @@
 						<a href="about.html">About Creator</a>
 					</li>
 					<li class="dropdown">
-        			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Messages <span class="caret">			</span></a>
+        			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Messages<span class="caret">			</span></a>
         			  <ul class="dropdown-menu">
-        			    <li><a href="#" style="color:grey"><img src="../uploads/profiles/avatars/{{Auth::user()->avatar_path}}" class="msg-thumbnail" data-toggle="modal" data-target="#avatarModal">Action</a></li>
-        			    <li><a href="#" style="color:grey">Action barcha text lahné</a></li>
-        			    <li><a href="#" style="color:grey">Action baaaaarcha text lahné</a></li>
+        			  	@if($threads->count() > 0)
+    					    @foreach($threads as $thread)
+    					        {{-- <h4 class="media-heading">{!! link_to('messages/' . $thread->id, $thread->subject) !!}</h4> --}}
+    					        {{-- <p></p> --}}
+    					        <li><a href="{{ Action('MessagesController@show', $thread->id)}}" style="color:grey"><div style="display: inline-block;"><img src="../uploads/profiles/avatars/{{$thread->creator()->avatar_path}}" class="msg-thumbnail"></div><div style="display: inline-block;">{{ $thread->creator()->name }} <br><small>{{ str_limit($thread->latestMessage->body,15) }}</small></div></a></li>
+    					        {{-- <p><small><strong>Participants:</strong> {{ $thread->participantsString(Auth::id()) }}</small></p> --}}
+    					    @endforeach
+    					@else
+    					    <li>Sorry, no threads.</li>
+    					@endif
+        			    
         			    <li role="separator" class="divider"></li>
-        			    <li><a href="#" style="color:grey">Action</a></li>
+        			    <li><a href="{{Action('MessagesController@index')}}" style="color:grey">All Messages</a></li>
+        			    <li role="separator" class="divider"></li>
+        			    <li><a href="#" style="color:grey" data-toggle="modal" data-target="#newMessageModal">New Message</a></li>
         			  </ul>
         			</li>
 					<li>
@@ -143,6 +153,60 @@
 
 	<!-- Theme JavaScript -->
 	{!! Html::script('js/clean-blog.min.js') !!}
+
+
+
+
+<div class="container">
+
+      <!-- Modal -->
+      <div class="modal fade" id="newMessageModal" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">New Message</h4> 
+            </div>
+            <div class="modal-body">
+              	{!! Form::open(['route' => 'messages.store']) !!}
+				<div class="col-md-6">
+				    <!-- Subject Form Input -->
+				    <div class="form-group">
+				        {!! Form::label('subject', 'Subject', ['class' => 'control-label']) !!}
+				        {!! Form::text('subject', null, ['class' => 'form-control']) !!}
+				    </div>
+				
+				    <!-- Message Form Input -->
+				    <div class="form-group">
+				        {!! Form::label('message', 'Message', ['class' => 'control-label']) !!}
+				        {!! Form::textarea('message', null, ['class' => 'form-control']) !!}
+				    </div>
+				
+				    @if($users->count() > 0)
+				    <div class="checkbox">
+				        @foreach($users as $user)
+				            <label title="{{ $user->name }}"><input type="checkbox" name="recipients[]" value="{{ $user->id }}">{!!$user->name!!}</label>
+				        @endforeach
+				    </div>
+				    @endif
+				    
+
+				</div>
+				
+                
+            </div>
+            <div class="modal-footer">
+            	{!! Form::submit('Submit', ['class' => 'btn btn-primary form-control', 'style' => '{margin-bottom:200px;}']) !!}
+            	{!! Form::close() !!}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
 
 </body>
 </html>
