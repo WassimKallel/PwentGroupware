@@ -13,6 +13,7 @@ return array(
     'App\\Http\\Controllers\\MessagesController' => $baseDir . '/app/Http/Controllers/MessagesController.php',
     'App\\Http\\Controllers\\ProjectController' => $baseDir . '/app/Http/Controllers/projectController.php',
     'CreateCommentsTable' => $baseDir . '/database/migrations/2016_11_22_025213_create_comments_table.php',
+    'CreateFilesTable' => $baseDir . '/database/migrations/2016_11_27_182730_create_files_table.php',
     'CreateMessagesTable' => $baseDir . '/database/migrations/2014_10_28_175710_create_messages_table.php',
     'CreateParticipantsTable' => $baseDir . '/database/migrations/2014_10_28_180224_create_participants_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',

@@ -16,9 +16,14 @@ Route::get('/', function () {
 
 Route::get('/projects', 'ProjectController@index');
 Route::post('/projects', 'ProjectController@store');
+
 Route::get('/projects/create', 'ProjectController@create');
 Route::get('/projects/{id}', 'ProjectController@show');
 Route::post('/projects/{id}', 'PostController@store');
+
+Route::get('/projects/{id}/files','FilesController@index');
+Route::get('/projects/{id}/files/create','FilesController@create');
+Route::post('/projects/{id}/files/create','FilesController@store');
 
 
 Route::get('/posts/{id}', 'PostController@show');
@@ -28,9 +33,6 @@ Route::post('/posts/{id}', 'CommentController@store');
 Route::get('/profile','UserController@index');
 Route::post('/profile','UserController@update_avatar');
 Route::get('/profile/{id}','UserController@show');
-
-
-
 
 
 

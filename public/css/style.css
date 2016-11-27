@@ -22,3 +22,25 @@
 	width: 40px; 
 	margin: 10px; 
 }
+
+.entries_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.entry {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 50px;
+}
+
+.entry-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    width: 100%;
+    padding-top: 8px;
+}
+

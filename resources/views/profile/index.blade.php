@@ -94,7 +94,7 @@
       </div>
     </div>
 
-    <button style="margin-top: -155px; color:white;" type="button" class="btn btn-link btn-xs pull-right" data-toggle="modal" data-target="#headerModal"><span class="glyphicon glyphicon-picture"></span>Update header</button>
+    <button style="margin-top: -155px; color:white;" type="button" class="btn btn-link btn-xsp pull-right" data-toggle="modal" data-target="#headerModal"><span class="glyphicon glyphicon-picture"></span>Update header</button>
 
     <div class="container">
 
@@ -157,7 +157,7 @@
             <div class="panel-heading">{{$project->name}}</div>
             <div class="panel-body">
               {{$project->description}}
-              <button type="button" class="btn btn-default pull-right"><a href="{{ action("ProjectController@main",array('id' => $project->id)) }}">Check Project</a></button>
+              <button type="button" class="btn btn-default pull-right"><a href="{{ action("ProjectController@show",array('id' => $project->id)) }}">Check Project</a></button>
             </div>
           </div> 
           @endforeach
@@ -170,7 +170,7 @@
             <div class="panel-heading">"{{$post->title}}" in "{{$post->project->name}}"</div>
             <div class="panel-body">
               {{$post->body}}
-              <button type="button" class="btn btn-default pull-right"><a href="{{ action("ProjectController@main",array('id' => $project->id)) }}">Check Post</a></button>
+              <button type="button" class="btn btn-default pull-right"><a href="{{ action("ProjectController@show",array('id' => $project->id)) }}">Check Post</a></button>
             </div>
           </div> 
           @endforeach
