@@ -5,6 +5,10 @@
 @stop
 
 @section('background-image')
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
 <header class="intro-header" style="background-image: url('../../../uploads/projects/header_images/{{$project->header_image_path}}')">
 @stop
 
@@ -46,31 +50,17 @@
 	   
              <div class="row">
              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    	       	  <div class="panel panel-primary">
-    	       	      <div class="panel-heading">
-    	       	          <h3 class="panel-title">{{ str_limit($file->name,30) }}</h3>
-    	       	      </div>
-    	       	      <div class="panel-body">
-    	       	          <p>{{ $file->description }}</p>
-    	       	      </div>
-    	       	      <div class="panel-footer">
-                        <span class="pull-right">
-                          <a class="ask_confirm" href="{{action('FilesController@download', array("id" => $file->project->id , "file_id" => $file->id))}}"><i class="glyphicon  glyphicon-download-alt"></i></a>
-                        </span>
-    	       	          <div class="clearfix"></div>
-    	       	      </div>
-    	       	  </div>
+
+             calendar
+    	       	   {!! $calendar->calendar() !!}
+    				      
                 </div>
                 </div>
-                  <ul class="pager">
-                    <li class="previous">
-                      <a href="{{action('FilesController@index',array("id" => $file->project->id))}}">&larr; Back</a>
-                    </li>
-                  </ul>
             </div>
          </div>
        </div>
      </div>
   </div>
 </div>
+    {!! $calendar->script() !!}
 @stop

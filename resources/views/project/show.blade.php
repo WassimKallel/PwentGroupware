@@ -22,6 +22,22 @@
 {{ $project->status }}
 @stop
 
+@section('side-menu')
+<div class="sidebar-nav col-lg-2">
+    <div class="well">
+    <ul class="nav nav-list"> 
+      <li class="nav-header">{{$project->name}}</li>        
+      <li><a href="{{action('ProjectController@show',array('id'=> $project->id))}}"><i class="icon-home"></i> Index <span class="badge badge-info">4</span></a></li>
+      <li><a href="{{action('ProjectController@show',array('id'=> $project->id))}}"><i class="icon-home"></i> Posts <span class="badge badge-info">4</span></a></li>
+      <li><a href="{{action('FilesController@index',array('id'=> $project->id))}}"><i class="icon-envelope"></i> Files <span class="badge badge-info">5</span></a></li>
+      <li><a href="#"><i class="icon-comment"></i> Calendar <span class="badge badge-info">10</span></a></li>
+      <li class="active"><a href="#"><i class="icon-user"></i> Members</a></li>
+      <li class="divider"></li>
+      <li><a href="#"><i class="icon-comment"></i> Edit </a></li>
+    </ul>
+  </div>
+</div>
+@stop
 
 @section('pageContent')
 	<div class="container">

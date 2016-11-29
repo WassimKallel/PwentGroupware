@@ -11,10 +11,13 @@
     <header class="intro-header" style="background-image: url('../uploads/profiles/header_images/{{$user->header_image_path}}')">
 @stop
 
-@section('pageContent')
+
+
+@section('profile-edit-content')
 <style type="text/css">
 
     .image figure {
+        position: relative
         left:0px;
         margin-top:-150px;
         width: 200px;
@@ -123,6 +126,10 @@
       </div>
     </div>
     @endif
+@stop
+
+@section('pageContent')
+
 <div class="container" style="margin-top: 100px;">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">

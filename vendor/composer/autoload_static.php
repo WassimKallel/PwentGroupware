@@ -274,6 +274,10 @@ class ComposerStaticInit10524ec2f7928b167c8665940e7fa505
             array (
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
+            'MaddHatter\\LaravelFullcalendar' => 
+            array (
+                0 => __DIR__ . '/..' . '/maddhatter/laravel-fullcalendar/src',
+            ),
         ),
         'J' => 
         array (
@@ -313,6 +317,7 @@ class ComposerStaticInit10524ec2f7928b167c8665940e7fa505
         'AddSoftdeletesToThreadsTable' => __DIR__ . '/../..' . '/database/migrations/2014_12_04_124531_add_softdeletes_to_threads_table.php',
         'App\\Http\\Controllers\\MessagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/MessagesController.php',
         'App\\Http\\Controllers\\ProjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/projectController.php',
+        'CreateCalendar' => __DIR__ . '/../..' . '/database/migrations/2016_11_29_040339_create_calendar.php',
         'CreateCommentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_025213_create_comments_table.php',
         'CreateFilesTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_27_182730_create_files_table.php',
         'CreateMessagesTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_28_175710_create_messages_table.php',

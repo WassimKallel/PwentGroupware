@@ -29,6 +29,11 @@ Route::get('/projects/{id}/files/{file_id}/download','FilesController@download')
 
 
 
+Route::get('/projects/{id}/calendar','CalendarController@index');
+
+
+
+
 
 Route::get('/posts/{id}', 'PostController@show');
 Route::post('/posts/{id}', 'CommentController@store');

@@ -118,10 +118,13 @@
 		</div>
 	</header>
 
+@yield('profile-edit-content')
+
+@yield('side-menu')
 
 
 
-	@yield('pageContent')
+@yield('pageContent')
 	<!-- Main Content -->
 
 
