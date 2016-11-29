@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Storage;
@@ -19,6 +20,19 @@ class FilesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function download($id, $file_id)
+    {
+        $file = UploadedFile::find($file_id);
+        $file_path_base = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
+        $file_url = $file_path_base.'projects'.'/'.$file->project->id.'/uploads/'.$file->name;
+        $headers = array(
+               'application/x-msdownload',
+             );
+
+     return response()->download($file_url, $file->name , $headers);
+    }
+
+
     public function index($id)
     {
         $project = Project::find($id);
@@ -32,9 +46,9 @@ class FilesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($project_id)
+    public function create($id)
     {
-        $project = Project::find($project_id);
+        $project = Project::find($id);
         return View('file.create')->with('project',$project);
     }
 
@@ -70,7 +84,6 @@ class FilesController extends Controller
        {
         //Flash::error('No file.');
         return redirect(action('FilesController@create',['id'=> $project->id]));
-
        }
     }
 
@@ -80,9 +93,11 @@ class FilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$file_id)
     {
-        //
+        $file = UploadedFile::find($file_id);
+        $project = $file->project;
+        return View('file.show')->with('project',$project)->with('file', $file);
     }
 
     /**

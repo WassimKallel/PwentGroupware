@@ -63,7 +63,17 @@
     					    @foreach($threads as $thread)
     					        {{-- <h4 class="media-heading">{!! link_to('messages/' . $thread->id, $thread->subject) !!}</h4> --}}
     					        {{-- <p></p> --}}
-    					        <li><a href="{{ Action('MessagesController@show', $thread->id)}}" style="color:grey"><div style="display: inline-block;"><img src="../uploads/profiles/avatars/{{$thread->creator()->avatar_path}}" class="msg-thumbnail"></div><div style="display: inline-block;">{{ $thread->creator()->name }} <br><small>{{ str_limit($thread->latestMessage->body,15) }}</small></div></a></li>
+    					        <li><a href="{{ Action('MessagesController@show', $thread->id)}}" style="color:grey"><div style="display: inline-block;">
+    					        @if(File::exists("../uploads/profiles/avatars/".$thread->creator()->avatar_path))
+    					        	<img src="../uploads/profiles/avatars/{{$thread->creator()->avatar_path}}" class="msg-thumbnail">
+    					        @elseif (File::exists("../../uploads/profiles/avatars/".$thread->creator()->avatar_path))
+    					        	<img src="../../uploads/profiles/avatars/{{$thread->creator()->avatar_path}}" class="msg-thumbnail">
+    					        @else
+    					        	<img src="../../../uploads/profiles/avatars/{{$thread->creator()->avatar_path}}" class="msg-thumbnail">
+    					        @endif
+
+
+    					        </div><div style="display: inline-block;">{{ $thread->creator()->name }} <br><small>{{ str_limit($thread->latestMessage->body,15) }}</small></div></a></li>
     					        {{-- <p><small><strong>Participants:</strong> {{ $thread->participantsString(Auth::id()) }}</small></p> --}}
     					    @endforeach
     					@else
@@ -71,13 +81,21 @@
     					@endif
         			    
         			    <li role="separator" class="divider"></li>
+        			    
         			    <li><a href="{{Action('MessagesController@index')}}" style="color:grey">All Messages</a></li>
         			    <li role="separator" class="divider"></li>
         			    <li><a href="#" style="color:grey" data-toggle="modal" data-target="#newMessageModal">New Message</a></li>
         			  </ul>
         			</li>
-					<li>
-					<img src="../uploads/profiles/avatars/{{Auth::user()->avatar_path}}" class="profile-avatar-header">
+					<li><a href="{{Action('UserController@index')}}">
+					@if (is_file("../uploads/profiles/avatars/{{Auth::user()->avatar_path}}")) 
+						<img src="../uploads/profiles/avatars/{{Auth::user()->avatar_path}}" class="profile-avatar-header">
+					@elseif (is_file("../../uploads/profiles/avatars/{{Auth::user()->avatar_path}}")) 
+						<img src="../../uploads/profiles/avatars/{{Auth::user()->avatar_path}}" class="profile-avatar-header">
+					@else 
+						<img src="../../../uploads/profiles/avatars/{{Auth::user()->avatar_path}}" class="profile-avatar-header">
+					@endif
+					</a>
 					</li>
 				</ul>
 			</div>
@@ -99,23 +117,6 @@
 			</div>
 		</div>
 	</header>
-
-
-
-<div class="sidebar-nav col-lg-2">
-    <div class="well">
-		<ul class="nav nav-list"> 
-		  <li class="nav-header">Admin Menu</li>        
-		  <li><a href="index"><i class="icon-home"></i> Dashboard</a></li>
-          <li><a href="#"><i class="icon-envelope"></i> Messages <span class="badge badge-info">4</span></a></li>
-          <li><a href="#"><i class="icon-comment"></i> Comments <span class="badge badge-info">10</span></a></li>
-		  <li class="active"><a href="#"><i class="icon-user"></i> Members</a></li>
-          <li class="divider"></li>
-		  <li><a href="#"><i class="icon-comment"></i> Settings</a></li>
-		  <li><a href="#"><i class="icon-share"></i> Logout</a></li>
-		</ul>
-	</div>
-</div>
 
 
 

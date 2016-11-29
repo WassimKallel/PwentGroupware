@@ -5,7 +5,13 @@
 @stop
 
 @section('background-image')
-<header class="intro-header" style="background-image: url('../uploads/projects/header_images/{{$project->header_image_path}}')">
+	@if(File::exists("../uploads/projects/header_images/".$project->header_image_path))
+  		<header class="intro-header" style="background-image: url('../uploads/projects/header_images/{{$project->header_image_path}}')">
+  	@elseif(File::exists("../../uploads/projects/header_images/".$project->header_image_path))
+  		<header class="intro-header" style="background-image: url('../../uploads/projects/header_images/{{$project->header_image_path}}')">
+  	@else
+  		<header class="intro-header" style="background-image: url('../../../uploads/projects/header_images/{{$project->header_image_path}}')">
+  	@endif
 @stop
 
 @section('title')

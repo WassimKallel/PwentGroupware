@@ -20,7 +20,7 @@
 	border-radius:50%;
 	height: 40px; 
 	width: 40px; 
-	margin: 10px; 
+  margin-top: -10px; 
 }
 
 .entries_container {

@@ -24,6 +24,10 @@ Route::post('/projects/{id}', 'PostController@store');
 Route::get('/projects/{id}/files','FilesController@index');
 Route::get('/projects/{id}/files/create','FilesController@create');
 Route::post('/projects/{id}/files/create','FilesController@store');
+Route::get('/projects/{id}/files/{file_id}','FilesController@show');
+Route::get('/projects/{id}/files/{file_id}/download','FilesController@download');
+
+
 
 
 Route::get('/posts/{id}', 'PostController@show');

@@ -41,7 +41,7 @@ class PostController extends Controller
         $project = Project::find($id);
         $post->project()->associate($project);
         Auth::user()->Posts()->save($post);
-        return $post;
+        return back();
     }
 
     /**

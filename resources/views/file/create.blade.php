@@ -44,7 +44,7 @@
                     </div>
                     
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="submit" class="btn btn-default btn-primary">
+                    <input type="submit" class="btn btn-default btn-primary pull-right" value="Upload">
                     
                     </form>
 
@@ -53,6 +53,11 @@
                 </div>
               </div>
             </div>
+            <ul class="pager">
+                    <li class="previous">
+                      <a href="{{action('FilesController@index',array("id" => $project->id))}}">&larr; Back</a>
+                    </li>
+                  </ul>
           </div>
         </div>
       </div>
