@@ -52,6 +52,7 @@ class ComposerStaticInit10524ec2f7928b167c8665940e7fa505
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'SuperClosure\\' => 13,
+            'Skecskes\\Calendar\\' => 18,
         ),
         'R' => 
         array (
@@ -186,6 +187,10 @@ class ComposerStaticInit10524ec2f7928b167c8665940e7fa505
         array (
             0 => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src',
         ),
+        'Skecskes\\Calendar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/skecskes/calendar/src',
+        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -317,7 +322,7 @@ class ComposerStaticInit10524ec2f7928b167c8665940e7fa505
         'AddSoftdeletesToThreadsTable' => __DIR__ . '/../..' . '/database/migrations/2014_12_04_124531_add_softdeletes_to_threads_table.php',
         'App\\Http\\Controllers\\MessagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/MessagesController.php',
         'App\\Http\\Controllers\\ProjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/projectController.php',
-        'CreateCalendar' => __DIR__ . '/../..' . '/database/migrations/2016_11_29_040339_create_calendar.php',
+        'CreateActivities' => __DIR__ . '/../..' . '/database/migrations/2016_12_05_002444_create_activities.php',
         'CreateCommentsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_025213_create_comments_table.php',
         'CreateFilesTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_27_182730_create_files_table.php',
         'CreateMessagesTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_28_175710_create_messages_table.php',

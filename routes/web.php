@@ -18,7 +18,10 @@ Route::get('/projects', 'ProjectController@index');
 Route::post('/projects', 'ProjectController@store');
 
 Route::get('/projects/create', 'ProjectController@create');
+
 Route::get('/projects/{id}', 'ProjectController@show');
+
+Route::get('/projects/{id}/posts', 'PostController@index');
 Route::post('/projects/{id}', 'PostController@store');
 
 Route::get('/projects/{id}/files','FilesController@index');

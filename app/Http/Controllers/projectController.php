@@ -7,6 +7,7 @@ use App\Project;
 use Auth;
 use Carbon\Carbon;
 use Image;
+use App\Activity;
 
 class ProjectController extends Controller
 {
@@ -49,8 +50,13 @@ class ProjectController extends Controller
             $filename = time() . '.' . $header->getClientOriginalExtension();
             Image::make($header)->save(public_path('uploads/projects/header_images/'.$filename ) );
             $project->header_image_path = $filename;
-            $project->save();
         }
+        $project->save();
+        $activity = new Activity();
+        $activity->user()->associate(Auth::user());
+        $activity->type = 'addProject';
+        $activity->project()->associate($project);
+        $activity->save();
         return back();
     }
 
@@ -63,7 +69,7 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::find($id);
-        return view('project.show')->with('project', $project);
+        return View('project.show')->with('project', $project);
     }
 
 

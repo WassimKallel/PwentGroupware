@@ -180,7 +180,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Cmgmyr\Messenger\MessengerServiceProvider::class,
-        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+        Skecskes\Calendar\CalendarServiceProvider::class,
 
     ],
 
@@ -232,7 +232,8 @@ return [
         'Form'=> Illuminate\Html\FormFacade::class,
         'Html'=> Illuminate\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
+        'Calendar' => Skecskes\Calendar\Facades\Calendar::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
 
     ],
 

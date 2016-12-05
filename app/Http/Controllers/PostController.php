@@ -7,6 +7,7 @@ use App\Project;
 use App\Post;
 use Carbon\Carbon;
 use Auth;
+use App\Activity;
 
 class PostController extends Controller
 {
@@ -15,9 +16,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $project = Project::find($id);
+        return view('post.index')->with('project', $project);
     }
 
     /**
@@ -41,6 +43,12 @@ class PostController extends Controller
         $project = Project::find($id);
         $post->project()->associate($project);
         Auth::user()->Posts()->save($post);
+        $activity = new Activity();
+        $activity->user()->associate(Auth::user());
+        $activity->type = 'addPost';
+        $activity->project()->associate($project);
+        $activity->post()->associate($post);
+        $activity->save();
         return back();
     }
 
@@ -54,9 +62,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $creationDate = $post->created_at;
-        // return $post;
-        $carbon = Carbon::now();
-        return   view('post.show')->with('post', $post)->with('diffInProjectCreation', $creationDate->diffForHumans($carbon));
+        $project = $post->project;
+        return   view('post.show')->with('post', $post)->with('project',$project);
     }
 
     /**

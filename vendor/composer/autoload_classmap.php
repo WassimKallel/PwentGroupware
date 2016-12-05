@@ -12,7 +12,7 @@ return array(
     'AddSoftdeletesToThreadsTable' => $baseDir . '/database/migrations/2014_12_04_124531_add_softdeletes_to_threads_table.php',
     'App\\Http\\Controllers\\MessagesController' => $baseDir . '/app/Http/Controllers/MessagesController.php',
     'App\\Http\\Controllers\\ProjectController' => $baseDir . '/app/Http/Controllers/projectController.php',
-    'CreateCalendar' => $baseDir . '/database/migrations/2016_11_29_040339_create_calendar.php',
+    'CreateActivities' => $baseDir . '/database/migrations/2016_12_05_002444_create_activities.php',
     'CreateCommentsTable' => $baseDir . '/database/migrations/2016_11_22_025213_create_comments_table.php',
     'CreateFilesTable' => $baseDir . '/database/migrations/2016_11_27_182730_create_files_table.php',
     'CreateMessagesTable' => $baseDir . '/database/migrations/2014_10_28_175710_create_messages_table.php',

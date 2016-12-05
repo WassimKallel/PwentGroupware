@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "190a7e2868527cd5b9e4b35af34ee942",
-    "content-hash": "197b90c7fea7817f6cbe9658a8bf1dab",
+    "hash": "ddd2cb396579abbc6c7f83cd12bc750a",
+    "content-hash": "4269335cc173e3d3b3c921f8915b29c2",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1294,6 +1294,45 @@
                 "uuid"
             ],
             "time": "2016-11-22 19:21:44"
+        },
+        {
+            "name": "skecskes/calendar",
+            "version": "0.2.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/skecskes/laravel-calendar.git",
+                "reference": "65c4ade0af263fa1f2d15ae127552e332cb3b061"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/skecskes/laravel-calendar/zipball/65c4ade0af263fa1f2d15ae127552e332cb3b061",
+                "reference": "65c4ade0af263fa1f2d15ae127552e332cb3b061",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Skecskes\\Calendar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Stefan Kecskes",
+                    "email": "info@skey.uk"
+                }
+            ],
+            "description": "Laravel 5 Flexible Calendar",
+            "keywords": [
+                "calendar",
+                "events",
+                "laravel"
+            ],
+            "time": "2016-06-24 01:45:13"
         },
         {
             "name": "swiftmailer/swiftmailer",

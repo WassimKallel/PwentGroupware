@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\File;
 use App\Project;
 use App\UploadedFile;
 use Auth;
+use App\Activity;
 
 class FilesController extends Controller
 {
@@ -78,6 +79,12 @@ class FilesController extends Controller
         $newFile->project()->associate($project);
         $newFile->name = $filename;
         $newFile->save();
+        $activity = new Activity();
+        $activity->user()->associate(Auth::user());
+        $activity->type = 'uploadFile';
+        $activity->project()->associate($project);
+        $activity->file_id = $newFile->id;
+        $activity->save();
         return redirect(action('FilesController@index',['id'=> $project->id]));
        }
        else

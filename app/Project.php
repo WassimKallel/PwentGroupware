@@ -21,5 +21,9 @@ class Project extends Model
     {
       return $this->hasMany(UploadedFile::class);
     }
+    public function activities()
+    {
+      return $this->hasMany(Activity::class);
+    }
     protected $dates = ['created_at'];
 }

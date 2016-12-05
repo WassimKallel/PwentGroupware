@@ -7,6 +7,8 @@ use App\Comment;
 use App\Post;
 use App\User;
 use Auth;
+use App\Activity;
+use App\Project;
 
 class CommentController extends Controller
 {
@@ -43,6 +45,13 @@ class CommentController extends Controller
         $comment->post()->associate($post);
         $comment->user()->associate(Auth::user());
         $comment->save();
+        $activity = new Activity();
+        $activity->user()->associate(Auth::user());
+        $activity->type = 'addComment';
+        $project = $post->project;
+        $activity->project()->associate($project);
+        $activity->post()->associate($post);
+        $activity->save();
         return back();
     }
 
