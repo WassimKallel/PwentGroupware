@@ -117,7 +117,7 @@ class ProjectController extends Controller
             $project->name = $request->name;
             $project->description = $request->description;
             $project->status = $request->status;
-
+            
             $project->save();
             // redirect
             Session::flash('message', 'Successfully updated project!');

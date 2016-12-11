@@ -318,6 +318,7 @@ class ComposerStaticInit10524ec2f7928b167c8665940e7fa505
     public static $classMap = array (
         'AddAvatarAndProfileHeaderImage' => __DIR__ . '/../..' . '/database/migrations/2016_11_23_162654_add_avatar_and_profile_header_image.php',
         'AddHeaderPathToProject' => __DIR__ . '/../..' . '/database/migrations/2016_11_27_173344_add_header_path_to_project.php',
+        'AddRoleToUsers' => __DIR__ . '/../..' . '/database/migrations/2016_12_11_194656_add_role_to_users.php',
         'AddSoftDeletesToParticipantsTable' => __DIR__ . '/../..' . '/database/migrations/2014_11_03_154831_add_soft_deletes_to_participants_table.php',
         'AddSoftdeletesToThreadsTable' => __DIR__ . '/../..' . '/database/migrations/2014_12_04_124531_add_softdeletes_to_threads_table.php',
         'App\\Http\\Controllers\\MessagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/MessagesController.php',

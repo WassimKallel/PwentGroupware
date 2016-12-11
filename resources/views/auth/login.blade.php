@@ -1,29 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>{{-- 
+    <title>Login - PwentGroupware</title>{{-- 
     <link href="/css/app.css" rel="stylesheet"> --}}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {!! Html::style('vendor/bootstrap/css/bootstrap.min.css') !!}
-
-    <style type="text/css">
-        body
-        {
-            background: url('/img/login-wallpaper.jpg') no-repeat;
-        }
-        #page-title
-        {
-            color: white;
-            font-size: 5em;
-            font-style: bold;
-            text-align:center;
-            margin: 75px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2 col-xs-12">
+            <div class="col-lg-8 col-lg-offset-2 col-xs-12">
             <div id="page-title">PwentGroupware</div>
                 <div class="panel panel-default">
                     <div class="panel-heading">Login</div>

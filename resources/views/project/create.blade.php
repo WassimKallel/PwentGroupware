@@ -31,7 +31,7 @@
 				{!! Form::text('description', null,['class' => 'form-control']); !!}
 
 				{!! Form::label('status', 'Status', ['class' => 'control-label']); !!}
-				{!! Form::select('status', ['in progress' => 'In Progress', 'scheduled' => 'Scheduled', 'finshed' => 'Finished'],['class' => '	form-control'], ['class' => 'form-control']); !!}
+				{!! Form::select('status', ['in progress' => 'In Progress', 'scheduled' => 'Scheduled', 'finished' => 'Finished'],['class' => '	form-control'], ['class' => 'form-control']); !!}
 				{!! Form::label('header', 'header'); !!}
 				{!! Form::file('header', ['class' => 'form-control']) !!}
 			</div>

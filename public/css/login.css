@@ -1,0 +1,23 @@
+body
+{
+    background: url('/img/login-wallpaper.jpg') no-repeat;
+}
+#page-title
+{
+    color: white;
+    font-size: 5em;
+    font-style: bold;
+    text-align:center;
+    margin: 75px;
+}
+@media screen and (max-width: 640px)
+{
+    #page-title
+    {
+        font-size: 2em;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+}
