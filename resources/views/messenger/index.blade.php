@@ -1,6 +1,7 @@
-@extends('layouts.master')
+@extends('layout')
 
-@section('content')
+@section('pageContent')
+    <div class="col-md-offset-3 col-md-6">
     @if (Session::has('error_message'))
         <div class="alert alert-danger" role="alert">
             {{ Session::get('error_message') }}
@@ -15,6 +16,7 @@
             <p><small><strong>Creator:</strong> {{ $thread->creator()->name }}</small></p>
             <p><small><strong>Participants:</strong> {{ $thread->participantsString(Auth::id()) }}</small></p>
         </div>
+        <hr>
         @endforeach
     @else
         <p>Sorry, no threads.</p>

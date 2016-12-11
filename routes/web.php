@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers;
+use App\Http\Middleware\CheckProjectAdmin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,13 +23,14 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	Route::get('/projects/create', 'ProjectController@create');
 	
-	Route::get('/projects/{id}', 'ProjectController@show');
-	Route::get('/projects/{id}/edit', 'ProjectController@edit');
+	Route::get('/projects/{id}', [ 'as' => 'project.home' , 'uses' => 'ProjectController@show']);
+
+	Route::get('/projects/{id}/edit', 'ProjectController@edit')->middleware(CheckProjectAdmin::class);;
+
 	Route::post('/projects/{id}/update', 'ProjectController@update');
 
 	Route::get('/projects/{id}/posts', 'PostController@index');
-	Route::post('/projects/{id}', [ 'as' => 'project.update' ,
-		'uses' => 'PostController@update']);
+	Route::post('/projects/{id}', [ 'as' => 'project.update' , 'uses' => 'ProjectController@update']);
 	
 	Route::get('/projects/{id}/files','FilesController@index');
 	Route::get('/projects/{id}/files/create','FilesController@create');

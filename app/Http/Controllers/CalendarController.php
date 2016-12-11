@@ -19,15 +19,15 @@ class CalendarController extends Controller
         foreach ($activities as $activity) {
             if($activity->type == 'addPost')
             {
-                $events["".$activity->created_at] = array("<a href=\"\" title=\"" . $activity->user->name ." posted ". $activity->post->title ."\">&#9673;</a>");
+                $events["".$activity->created_at] = array("<a href=\"\posts\\$activity->post_id\" title=\"" . $activity->user->name ." posted ". $activity->post->title ."\">&#9673;</a>");
             }
             elseif($activity->type == 'addComment')
             {
-                $events["".$activity->created_at] = array("<a href=\"\" title=\"" . $activity->user->name ." commented on ". $activity->post->title ."\">&#9673;</a>");
+                $events["".$activity->created_at] = array("<a href=\"\posts\\$activity->post_id\" title=\"" . $activity->user->name ." commented on ". $activity->post->title ."\">&#9673;</a>");
             }
             elseif($activity->type == 'uploadFile')
             {
-                $events["".$activity->created_at] = array("<a href=\"\" title=\"" . $activity->user->name ." uploaded the file ". $activity->file->name ."\">&#9673;</a>");
+                $events["".$activity->created_at] = array("<a href=\"\projects\\$activity->project_id\\files\\$activity->file_id\" title=\"" . $activity->user->name ." uploaded the file ". $activity->file->name ."\">&#9673;</a>");
             }
 
 

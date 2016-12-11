@@ -1,13 +1,13 @@
-@extends('layouts.master')
+@extends('layout')
 
-@section('content')
-    <div class="col-md-6">
+@section('pageContent')
+    <div class="col-md-offset-3 col-md-6">
         <h1>{{ $thread->subject }}</h1>
 
         @foreach($thread->messages as $message)
             <div class="media">
                 <a class="pull-left" href="#">
-                    <img src="//www.gravatar.com/avatar/{{ md5($message->user->email) }} ?s=64" alt="{{ $message->user->name }}" class="img-circle">
+                    <img style="height: 64px; width: 64px;" src="../uploads/profiles/avatars/{{$message->user->avatar_path}}" alt="{{ $message->user->name }}" class="img-circle">
                 </a>
                 <div class="media-body">
                     <h5 class="media-heading">{{ $message->user->name }}</h5>
@@ -17,7 +17,8 @@
             </div>
         @endforeach
 
-        <h2>Add a new message</h2>
+        {{-- <h2>Add a new message</h2> --}}
+        <br>
         {!! Form::open(['route' => ['messages.update', $thread->id], 'method' => 'PUT']) !!}
         <!-- Message Form Input -->
         <div class="form-group">
@@ -34,7 +35,7 @@
 
         <!-- Submit Form Input -->
         <div class="form-group">
-            {!! Form::submit('Submit', ['class' => 'btn btn-primary form-control']) !!}
+            {!! Form::submit('Send', ['class' => 'btn btn-primary form-control']) !!}
         </div>
         {!! Form::close() !!}
     </div>

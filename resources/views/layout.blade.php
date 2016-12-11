@@ -51,10 +51,7 @@
 				<ul class="nav navbar-nav navbar-right">
 
 					<li>
-						<a href="index.html">Project home</a>
-					</li>
-					<li>
-						<a href="about.html">About Creator</a>
+						<a href="{{action('ProjectController@index')}}">All Projects</a>
 					</li>
 					<li class="dropdown">
         			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Messages<span class="caret">			</span></a>
@@ -185,7 +182,7 @@
             </div>
             <div class="modal-body">
               	{!! Form::open(['route' => 'messages.store']) !!}
-				<div class="col-md-6">
+				
 				    <!-- Subject Form Input -->
 				    <div class="form-group">
 				        {!! Form::label('subject', 'Subject', ['class' => 'control-label']) !!}
@@ -207,7 +204,7 @@
 				    @endif
 				    
 
-				</div>
+				
 				
                 
             </div>

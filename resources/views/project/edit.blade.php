@@ -23,7 +23,7 @@
 				<!-- Pager -->
 				<ul class="pager">
 					<li class="previous">
-						<a href="{{action('ProjectController@show',array('id' => $project->id))}}">Back to Projects</a>
+						<a href="{{action('ProjectController@show',array('id' => $project->id))}}">Back to Project</a>
 					</li>
 				</ul>
 

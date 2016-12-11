@@ -177,7 +177,7 @@
             <div class="panel-heading">"{{$post->title}}" in "{{$post->project->name}}"</div>
             <div class="panel-body">
               {{$post->body}}
-              <button type="button" class="btn btn-default pull-right"><a href="{{ action("ProjectController@show",array('id' => $project->id)) }}">Check Post</a></button>
+              <button type="button" class="btn btn-default pull-right"><a href="{{ action("PostController@show",array('id' => $post->id)) }}">Check Post</a></button>
             </div>
           </div> 
           @endforeach

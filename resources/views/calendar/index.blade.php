@@ -1,4 +1,6 @@
 @extends('projectLayout')
 @section('content')
-    {!! $html !!} 
+	<div style="width: 100%;">
+    	{!! $html !!} 
+    </div>
 @stop

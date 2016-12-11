@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Project;
 use Auth;
 use Carbon\Carbon;
 use Image;
 use App\Activity;
+use Session;    
+use Redirect;
 
 class ProjectController extends Controller
 {
@@ -92,7 +96,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request,$id)
     {
         // validate
         // read more on validation at http://laravel.com/docs/validation
@@ -100,7 +104,7 @@ class ProjectController extends Controller
             'name' => 'required',
             'description' => 'required',
         );
-        $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make($request->all(), $rules);
 
         // process the login
         if ($validator->fails()) {
@@ -110,14 +114,14 @@ class ProjectController extends Controller
         } else {
             // store
             $project = Project::find($id);
-            $project->name = Input::get('name');
-            $project->description = Input::get('description');
-            $project->status = Input::get('status');
+            $project->name = $request->name;
+            $project->description = $request->description;
+            $project->status = $request->status;
 
             $project->save();
             // redirect
             Session::flash('message', 'Successfully updated project!');
-            //return Redirect::to('projects');
+            return Redirect::to('projects/' . $id);
         }
     }
 
