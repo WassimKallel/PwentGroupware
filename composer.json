@@ -11,7 +11,8 @@
         "intervention/image": "^2.3",
         "cmgmyr/messenger": "~2.0",
         "maddhatter/laravel-fullcalendar": "^1.2",
-        "skecskes/calendar": "^0.2.12"
+        "skecskes/calendar": "^0.2.12",
+        "elioair/chesscaptcha": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
