@@ -97,7 +97,7 @@
       </div>
     </div>
 
-    <button style="margin-top: -155px; color:white;" type="button" class="btn btn-link btn-xsp pull-right" data-toggle="modal" data-target="#headerModal"><span class="glyphicon glyphicon-picture"></span>Update header</button>
+    <button style="margin-top: -165px; color:white;" type="button" class="btn btn-link btn-xsp pull-right" data-toggle="modal" data-target="#headerModal"><span class="glyphicon glyphicon-picture"></span>Update header</button>
 
     <div class="container">
 

@@ -330,6 +330,7 @@ class ComposerStaticInit10524ec2f7928b167c8665940e7fa505
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePostsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_22_021954_create_posts_table.php',
         'CreateProjectsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_21_003826_create_projects_table.php',
+        'CreateTasksMigration' => __DIR__ . '/../..' . '/database/migrations/2016_12_09_170818_create_tasks_migration.php',
         'CreateThreadsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_28_175635_create_threads_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',

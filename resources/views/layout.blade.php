@@ -64,13 +64,7 @@
     					        {{-- <h4 class="media-heading">{!! link_to('messages/' . $thread->id, $thread->subject) !!}</h4> --}}
     					        {{-- <p></p> --}}
     					        <li><a href="{{ Action('MessagesController@show', $thread->id)}}" style="color:grey"><div style="display: inline-block;">
-    					        @if(File::exists("../uploads/profiles/avatars/".$thread->creator()->avatar_path))
-    					        	<img src="../uploads/profiles/avatars/{{$thread->creator()->avatar_path}}" class="msg-thumbnail">
-    					        @elseif (File::exists("../../uploads/profiles/avatars/".$thread->creator()->avatar_path))
-    					        	<img src="../../uploads/profiles/avatars/{{$thread->creator()->avatar_path}}" class="msg-thumbnail">
-    					        @else
-    					        	<img src="../../../uploads/profiles/avatars/{{$thread->creator()->avatar_path}}" class="msg-thumbnail">
-    					        @endif
+    					        <img src="{{ URL::to('/') . '/uploads/profiles/avatars/' . $thread->creator()->avatar_path}}" class="msg-thumbnail">
 
 
     					        </div><div style="display: inline-block;">{{ $thread->creator()->name }} <br><small>{{ str_limit($thread->latestMessage->body,15) }}</small></div></a></li>
@@ -87,15 +81,13 @@
         			    <li><a href="#" style="color:grey" data-toggle="modal" data-target="#newMessageModal">New Message</a></li>
         			  </ul>
         			</li>
-					<li><a href="{{Action('UserController@index')}}">
-					@if (is_file("../uploads/profiles/avatars/{{Auth::user()->avatar_path}}")) 
-						<img src="../uploads/profiles/avatars/{{Auth::user()->avatar_path}}" class="profile-avatar-header">
-					@elseif (is_file("../../uploads/profiles/avatars/{{Auth::user()->avatar_path}}")) 
-						<img src="../../uploads/profiles/avatars/{{Auth::user()->avatar_path}}" class="profile-avatar-header">
-					@else 
-						<img src="../../../uploads/profiles/avatars/{{Auth::user()->avatar_path}}" class="profile-avatar-header">
-					@endif
-					</a>
+					<li>
+						<a href="{{Action('UserController@index')}}"> 
+					 		<img src="{{ URL::to('/') .'/uploads/profiles/avatars/' . Auth::user()->avatar_path}}" class="profile-avatar-header">
+						</a>
+					</li>
+					<li>
+					<i><a href="{{action('\App\Http\Controllers\Auth\LoginController@logout')}}"><span class="glyphicon glyphicon-log-out"></span></a></i>
 					</li>
 				</ul>
 			</div>

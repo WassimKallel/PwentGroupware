@@ -14,6 +14,9 @@
       	          <p>{{ $file->description }}</p>
       	      </div>
       	      <div class="panel-footer">
+              <span class="pull-left">
+                Uploaded by <a class="ask_confirm" href="{{action('UserController@show', array("id" => $file->user->id))}}">{{$file->user->name}}</a>
+               </span>
                <span class="pull-right">
                  <a class="ask_confirm" href="{{action('FilesController@download', array("id" => $file->project->id , "file_id" => $file->id))}}"><i class="glyphicon  glyphicon-download-alt"></i></a>
                </span>

@@ -81,7 +81,8 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::find($id);
+        return View('project.edit')->with('project', $project);
     }
 
     /**
@@ -91,9 +92,33 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        // validate
+        // read more on validation at http://laravel.com/docs/validation
+        $rules = array(
+            'name' => 'required',
+            'description' => 'required',
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('projects/' . $id . '/edit')
+                ->withErrors($validator)
+                ->withInput(Input::except('password'));
+        } else {
+            // store
+            $project = Project::find($id);
+            $project->name = Input::get('name');
+            $project->description = Input::get('description');
+            $project->status = Input::get('status');
+
+            $project->save();
+            // redirect
+            Session::flash('message', 'Successfully updated project!');
+            //return Redirect::to('projects');
+        }
     }
 
     /**

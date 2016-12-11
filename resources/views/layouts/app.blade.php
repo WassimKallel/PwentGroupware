@@ -19,6 +19,11 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <style type="text/css">
+        #app {
+            background-image: '/img/login-wallpaper.jpg';
+        }
+    </style>
 </head>
 <body>
     <div id="app">

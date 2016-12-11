@@ -9,7 +9,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
-<header class="intro-header" style="background-image: url('../../../uploads/projects/header_images/{{$project->header_image_path}}')">
+<header class="intro-header" style="background-image: url('{{ URL::to('/') . '/uploads/projects/header_images/' .$project->header_image_path}}')">
 @stop
 
 @section('title')
@@ -32,7 +32,7 @@
       <li><a href="{{action('CalendarController@index',array('id'=> $project->id))}}"><i class="icon-comment"></i> Calendar <span class="badge badge-info">10</span></a></li>
       <li class="active"><a href="#"><i class="icon-user"></i> Members</a></li>
       <li class="divider"></li>
-      <li><a href="#"><i class="icon-comment"></i> Edit </a></li>
+      <li><a href="{{action('ProjectController@edit',array('id'=> $project->id))}}"><i class="icon-comment"></i> Edit </a></li>
     </ul>
   </div>
 </div>

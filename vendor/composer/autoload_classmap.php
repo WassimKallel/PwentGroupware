@@ -20,6 +20,7 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePostsTable' => $baseDir . '/database/migrations/2016_11_22_021954_create_posts_table.php',
     'CreateProjectsTable' => $baseDir . '/database/migrations/2016_11_21_003826_create_projects_table.php',
+    'CreateTasksMigration' => $baseDir . '/database/migrations/2016_12_09_170818_create_tasks_migration.php',
     'CreateThreadsTable' => $baseDir . '/database/migrations/2014_10_28_175635_create_threads_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
