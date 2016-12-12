@@ -79,10 +79,10 @@
 				  </div>
 				</div>
 				</td>
-                 <tr><td colspan="3" class="hiddenRow"><div class="accordian-body collapse" id="demo{{$task->id}}"> <strong class="bold">Details:</strong><br><pre>{{$task->details}}</pre>
+                 <tr><td colspan="3" class="hiddenRow"><div class="accordian-body collapse" id="demo{{$task->id}}"> <div  style="margin-right: 15px;margin-left: 15px;"><strong class="bold">Details:</strong><br><pre>{{$task->details}}</pre></div>
                  @if(Auth::user() == $task->user)
                  	{!! Form::open(['route' => array('task.update', $task->id)]) !!}
-                 	<div class="col-md-8">
+                 	<div class="col-md-10">
                  	<div class="form-group">
 						<label for="progress">Update progress:</label>
 						<select name="progress" class="form-control" id="progress">
@@ -92,9 +92,9 @@
 						</select>
 					</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-2">
 					<br>
-					{!! Form::submit('update progress', ['class' => 'btn-sm btn-warning' ,'style' => 'margin-top: 5px']) !!}
+					{!! Form::submit('update progress', ['class' => 'btn-sm btn-primary pull-right' ,'style' => 'margin-top: 5px']) !!}
     		        	{!! Form::close() !!}
     		        	<br>
     		        </div>

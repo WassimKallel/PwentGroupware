@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "192f182f3ec0075e14bac7bb7cb3e9df",
-    "content-hash": "64bc0bea488fbf0325b15b880b3e2f43",
+    "hash": "ddd2cb396579abbc6c7f83cd12bc750a",
+    "content-hash": "4269335cc173e3d3b3c921f8915b29c2",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -215,55 +215,6 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
-        },
-        {
-            "name": "elioair/chesscaptcha",
-            "version": "2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/elioair/chesscaptcha.git",
-                "reference": "e9a2bb9ff6ae9015ffacfff07405d904dc77156b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/elioair/chesscaptcha/zipball/e9a2bb9ff6ae9015ffacfff07405d904dc77156b",
-                "reference": "e9a2bb9ff6ae9015ffacfff07405d904dc77156b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.0.*"
-            },
-            "suggest": {
-                "ext-gd": "Uses GD library to generate the image"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Elioair\\ChessCaptcha\\": "src/ChessCaptcha"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Elioair"
-                }
-            ],
-            "description": "A simple chess based captcha system.",
-            "homepage": "http://elioair.github.io/chesscaptcha/",
-            "keywords": [
-                "Abuse",
-                "captcha",
-                "chess",
-                "chesscaptcha",
-                "spam"
-            ],
-            "time": "2015-11-01 18:40:43"
         },
         {
             "name": "guzzlehttp/psr7",

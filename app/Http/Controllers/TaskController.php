@@ -30,6 +30,13 @@ class TaskController extends Controller
     	$task->project()->associate($project);
     	$task->progress = 0;
     	$task->save();
+        $activity = new Activity();
+        $activity->user()->associate($user);
+        $activity->type = 'addComment';
+        $project = $post->project;
+        $activity->project()->associate($project);
+        $activity->post()->associate($post);
+        $activity->save();
     	return back();
     }
     public function update($id,Request $request)
