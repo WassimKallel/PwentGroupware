@@ -30,9 +30,11 @@
       <li><a href="{{action('PostController@index',array('id'=> $project->id))}}"><i class="icon-home"></i> Posts <span class="badge badge-info">{{ $project->posts->count()}}</span></a></li>
       <li><a href="{{action('FilesController@index',array('id'=> $project->id))}}"><i class="icon-envelope"></i> Files <span class="badge badge-info">{{ $project->UploadedFiles->count()}}</span></a></li>
       <li><a href="{{action('CalendarController@index',array('id'=> $project->id))}}"><i class="icon-comment"></i> Calendar <span class="badge badge-info">10</span></a></li>
-      <li class="active"><a href="#"><i class="icon-user"></i> Members</a></li>
+      <li class="active"><a href="{{action('TaskController@index',array('id'=> $project->id))}}"><i class="icon-user"></i> Tasks</a></li>
       <li class="divider"></li>
+      @if($project->user == Auth::user())
       <li><a href="{{action('ProjectController@edit',array('id'=> $project->id))}}"><i class="icon-comment"></i> Edit </a></li>
+      @endif
     </ul>
   </div>
 </div>

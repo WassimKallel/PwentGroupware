@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/projects/{id}/tasks','TaskController@index');
 	Route::post('/projects/{id}/tasks', [ 'as' => 'task.store' , 'uses' => 'TaskController@store']);
+	Route::post('/projects/{id}/tasks/update', [ 'as' => 'task.update' , 'uses' => 'TaskController@update']);
 	
 	
 	

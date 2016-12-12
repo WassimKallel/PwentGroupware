@@ -66,14 +66,40 @@
 			  	<td>{{$task->name}}</td>
 			  	<td>{{$task->user->name}}</td>
 			  	<td>
-			  	<div class="progress">
-				  <div class="progress-bar" role="progressbar" aria-valuenow="{{$task->progress}}"
-				  aria-valuemin="0" aria-valuemax="100" style="width:{{$task->progress}}%">
+			  	<div style="margin-top: 5px" class="progress">
+				  <div class="progress-bar
+				  @if($task->progress <= 20)
+				  progress-bar-danger
+				  @elseif($task->progress == 100)
+				  progress-bar-success
+				  @endif
+				  " role="progressbar" aria-valuenow="{{$task->progress}}"
+				  aria-valuemin="0" aria-valuemax="100" style="width:{{$task->progress}}%;">
 				    {{$task->progress}}%
 				  </div>
 				</div>
 				</td>
                  <tr><td colspan="3" class="hiddenRow"><div class="accordian-body collapse" id="demo{{$task->id}}"> <strong class="bold">Details:</strong><br><pre>{{$task->details}}</pre>
+                 @if(Auth::user() == $task->user)
+                 	{!! Form::open(['route' => array('task.update', $task->id)]) !!}
+                 	<div class="col-md-8">
+                 	<div class="form-group">
+						<label for="progress">Update progress:</label>
+						<select name="progress" class="form-control" id="progress">
+							@for ($i = 0; $i <= 100; $i+=10)
+								<option value="{{ $i }}">{{$i}}%</option>
+							@endfor
+						</select>
+					</div>
+					</div>
+					<div class="col-md-4">
+					<br>
+					{!! Form::submit('update progress', ['class' => 'btn-sm btn-warning' ,'style' => 'margin-top: 5px']) !!}
+    		        	{!! Form::close() !!}
+    		        	<br>
+    		        </div>
+                 @endif
+                 <div class="clearfix"></div>
                     </div> </td></tr>
 			  </tr>
 			   @endforeach

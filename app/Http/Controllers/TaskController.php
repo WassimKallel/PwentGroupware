@@ -32,4 +32,11 @@ class TaskController extends Controller
     	$task->save();
     	return back();
     }
+    public function update($id,Request $request)
+    {
+        $task = Task::find($id);
+        $task->progress = $request->progress;
+        $task->save();
+        return back();
+    }
 }
