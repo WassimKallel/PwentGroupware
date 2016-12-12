@@ -50,3 +50,7 @@ span.glyphicon {
         margin-left: 20px;
     }
 }
+
+.hiddenRow {
+    padding: 0 !important;
+}

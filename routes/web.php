@@ -37,6 +37,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/projects/{id}/files/create','FilesController@store');
 	Route::get('/projects/{id}/files/{file_id}','FilesController@show');
 	Route::get('/projects/{id}/files/{file_id}/download','FilesController@download');
+
+	Route::get('/projects/{id}/tasks','TaskController@index');
+	Route::post('/projects/{id}/tasks', [ 'as' => 'task.store' , 'uses' => 'TaskController@store']);
 	
 	
 	

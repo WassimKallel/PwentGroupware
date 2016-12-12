@@ -21,7 +21,7 @@ class BoardImageCreator{
   protected $enableCoordinates  = false;
   protected $squareSize         = 26;     // in px, max 150
   protected $pieceStyle         = "wikipedia";  // default option here
-  protected $pieceImageDir      = "/home/dong/PwentGroupware/public/img/pieces/wikipedia/";
+  protected $pieceImageDir      = "C:\Users\Wassim\Desktop\pwent\PwentGroupware\public\img\pieces\wikipedia\\";
   protected $base64ImageOut     = true;
   public    $boardOut;
 

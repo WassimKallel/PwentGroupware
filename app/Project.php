@@ -25,5 +25,9 @@ class Project extends Model
     {
       return $this->hasMany(Activity::class);
     }
+    public function tasks()
+    {
+      return $this->hasMany(Task::class);
+    }
     protected $dates = ['created_at'];
 }
