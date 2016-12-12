@@ -49,7 +49,14 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-
+				@if(Auth::user()->id == 1)
+					<li class="dropdown">
+        			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin space<span class="caret">			</span></a>
+        			  <ul class="dropdown-menu">
+        			    <li><a href="{{Action('AdminController@showAddUserForm')}}" style="color:grey">Add User</a></li>
+        			  </ul>
+        			</li>
+        		@endif
 					<li>
 						<a href="{{action('ProjectController@index')}}">All Projects</a>
 					</li>
@@ -150,7 +157,7 @@
 							</a>
 						</li>
 					</ul>
-					<p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+					<p class="copyright text-muted">Copyright &copy; PwentGroupware 2016</p>
 				</div>
 			</div>
 		</div>

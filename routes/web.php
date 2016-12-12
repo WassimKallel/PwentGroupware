@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers;
 use App\Http\Middleware\CheckProjectAdmin;
+use App\Http\Middleware\CheckAdmin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,7 +12,6 @@ use App\Http\Middleware\CheckProjectAdmin;
 | to using a Closure or controller method. Build something great!
 |create
 */
-
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/', function () {
@@ -42,8 +42,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/projects/{id}/tasks', [ 'as' => 'task.store' , 'uses' => 'TaskController@store']);
 	Route::post('/projects/{id}/tasks/update', [ 'as' => 'task.update' , 'uses' => 'TaskController@update']);
 	
-	
-	
 	Route::get('/projects/{id}/calendar','CalendarController@index');
 	
 	Route::get('/posts/{id}', 'PostController@show');
@@ -53,9 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/profile','UserController@index');
 	Route::post('/profile','UserController@update_avatar');
 	Route::get('/profile/{id}','UserController@show');
-	
-	
-	
+
 	Route::group(['prefix' => 'messages'], function () {
 	    Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
 	    Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
@@ -65,8 +61,29 @@ Route::group(['middleware' => 'auth'], function () {
 	});
 });
 
-Auth::routes();
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::group(['middleware' => ['web']], function() {
+
+// Login Routes...
+    Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
+    Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
+    Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
+    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+// Registration Routes...
+
+
+// Password Reset Routes...
+    Route::get('password/reset', ['as' => 'password.reset', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
+    Route::post('password/email', ['as' => 'password.email', 'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
+    Route::get('password/reset/{token}', ['as' => 'password.reset.token', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
+    Route::post('password/reset', ['as' => 'password.reset.post', 'uses' => 'Auth\ResetPasswordController@reset']);
+});
+
+	
+Route::group(['prefix' => 'admin' , 'middleware' => CheckAdmin::class], function () {
+    Route::get('/addUser', ['as' => 'admin.addUserForm', 'uses' => 'AdminController@showAddUserForm']); 
+    Route::post('/addUser', ['as' => 'admin.addUser', 'uses' => 'AdminController@addUser']);
+});
 
 Route::get('/home', function () {
 	    return Redirect(action('ProjectController@index'));

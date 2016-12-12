@@ -31,13 +31,20 @@
 				</div>
 			<hr>
 			@endforeach
-				<hr>
+				
+
 				<!-- Pager -->
+				{{--
+				<hr>
 				<ul class="pager">
 					<li class="next">
 						<a href="#">Older Posts &rarr;</a>
 					</li>
 				</ul>
+				--}}
+
+
+
 			</div>
 		</div>
 	</div>

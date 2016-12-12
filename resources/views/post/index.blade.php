@@ -18,13 +18,24 @@
 				</div>
 			<hr>
 			@endforeach
-				<hr>
 				<!-- Pager -->
+
+
+
+				{{-- TODO Pagination --}}
+				{{--
+				<hr>
 				<ul class="pager">
 					<li class="next">
 						<a href="#">Older Posts &rarr;</a>
 					</li>
 				</ul>
+				--}}
+
+
+
+
+
 				<h1>Add new post</h1>
 			<hr>
 			<div class="form-group"></div>
