@@ -29,8 +29,10 @@ class CalendarController extends Controller
             {
                 $events["".$activity->created_at] = array("<a href=\"\projects\\$activity->project_id\\files\\$activity->file_id\" title=\"" . $activity->user->name ." uploaded the file ". $activity->file->name ."\">&#9673;</a>");
             }
-
-
+            elseif($activity->type == 'addTask')
+            {
+                $events["".$activity->created_at] = array("<a href=\"\projects\\$activity->project_id\\tasks\" title=\"" . $activity->user->name ." has new task called ". $activity->task->name ."\">&#9673;</a>");
+            }
         }
 
 		// $events = array(

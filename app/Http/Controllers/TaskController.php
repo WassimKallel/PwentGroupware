@@ -8,6 +8,7 @@ use App\Project;
 use App\Task;
 use App\User;
 use Auth;
+use App\Activity;
 
 class TaskController extends Controller
 {
@@ -32,10 +33,9 @@ class TaskController extends Controller
     	$task->save();
         $activity = new Activity();
         $activity->user()->associate($user);
-        $activity->type = 'addComment';
-        $project = $post->project;
+        $activity->type = 'addTask';
         $activity->project()->associate($project);
-        $activity->post()->associate($post);
+        $activity->task()->associate($task);
         $activity->save();
     	return back();
     }
