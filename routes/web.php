@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/projects/{id}/update', 'ProjectController@update');
 
 	Route::get('/projects/{id}/posts', 'PostController@index');
+	Route::post('/projects/{id}/posts', 'PostController@store');
 	Route::post('/projects/{id}', [ 'as' => 'project.update' , 'uses' => 'ProjectController@update']);
 	
 	Route::get('/projects/{id}/files','FilesController@index');
